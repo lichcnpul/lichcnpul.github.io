@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Javascript 每日练习-1 | すべてはシュタインズゲートの選択だ</title>
+  <meta name="author" content="Li Yi">
+  
+  <meta name="description" content="Q1:创建一个记录学生成绩的对象，提供一个添加成绩的方法，以及一个显示学生平均成绩的方法。1234567891011121314151617181920212223242526function Grade() &amp;#123;  this.dataStore = [];  this.add = add;">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Javascript 每日练习-1"/>
+  <meta property="og:site_name" content="すべてはシュタインズゲートの選択だ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="すべてはシュタインズゲートの選択だ" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">すべてはシュタインズゲートの選択だ</a><span class="split"></span><span class="title">Javascript 每日练习-1</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2015-07-09</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  
+
+  
+	<div class="col-md-12">
+	  
+
+	  <!-- content -->
+	  <h3 id="Q1:创建一个记录学生成绩的对象，提供一个添加成绩的方法，以及一个显示学生平均成绩的方法。">Q1:创建一个记录学生成绩的对象，提供一个添加成绩的方法，以及一个显示学生平均成绩的方法。</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Grade</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.dataStore = [];</span><br><span class="line">  <span class="keyword">this</span>.add = add;</span><br><span class="line">  <span class="keyword">this</span>.displayAvg = displayAvg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">score</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.dataStore.push(score);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">displayAvg</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> avg;</span><br><span class="line">  <span class="keyword">var</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="keyword">this</span>.dataStore.length; ++i) &#123;</span><br><span class="line">    sum += <span class="keyword">this</span>.dataStore[i];</span><br><span class="line">  &#125;</span><br><span class="line">  avg = sum / <span class="keyword">this</span>.dataStore.length;</span><br><span class="line">  print(avg.toFixed(<span class="number">2</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> grade = <span class="keyword">new</span> Grade();</span><br><span class="line">grade.add(<span class="number">80</span>);</span><br><span class="line">grade.add(<span class="number">70</span>);</span><br><span class="line">grade.add(<span class="number">60</span>);</span><br><span class="line">grade.add(<span class="number">100</span>);</span><br><span class="line">grade.displayAvg();</span><br></pre></td></tr></table></figure>
+<h3 id="Q2:将一组单词存储在一个数组中，并按正序和倒序分别显示这些单词。">Q2:将一组单词存储在一个数组中，并按正序和倒序分别显示这些单词。</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> words = [<span class="string">"hello"</span>,<span class="string">"java"</span>,<span class="string">"js"</span>,<span class="string">"csharp"</span>,<span class="string">"cplusplus"</span>,<span class="string">"python"</span>];</span><br><span class="line">words.sort();</span><br><span class="line">print(words);</span><br><span class="line">words.reverse();</span><br><span class="line">print(words);</span><br></pre></td></tr></table></figure>
+<h3 id="Q3:修改本章前面出现过的weeklyTemps对象，使它可以使用一个二维数组来存储每月的有用数据。增加一些方法用以显示月平均数、具体某一周平均数和所有周的平均数">Q3:修改本章前面出现过的weeklyTemps对象，使它可以使用一个二维数组来存储每月的有用数据。增加一些方法用以显示月平均数、具体某一周平均数和所有周的平均数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//修改本章前面出现过的weeklyTemps对象，使它可以使用一个二维数组来存储每月的有用数据。</span></span><br><span class="line"><span class="comment">//增加一些方法用以显示月平均数、具体某一周平均数和所有周的平均数。</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">weekTemps</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.dataStore = data;</span><br><span class="line">    <span class="keyword">this</span>.add = add;</span><br><span class="line">    <span class="keyword">this</span>.monthaverage = monthaverage;</span><br><span class="line">    <span class="keyword">this</span>.weekaverage = weekaverage;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">week,temp</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.dataStore[week-<span class="number">1</span>].push(temp);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">monthaverage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> day = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> row = <span class="number">0</span>; row &lt; <span class="keyword">this</span>.dataStore.length; ++row) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> col = <span class="number">0</span>; col &lt; <span class="keyword">this</span>.dataStore[row].length; ++col) &#123;</span><br><span class="line">          total += <span class="keyword">this</span>.dataStore[row][col];</span><br><span class="line">          ++day;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (total / day).toFixed(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">weekaverage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> avg = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> row = <span class="number">0</span>; row &lt; <span class="keyword">this</span>.dataStore.length; ++row) &#123;</span><br><span class="line">    total = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> col = <span class="number">0</span>; col &lt; <span class="keyword">this</span>.dataStore[row].length; ++col) &#123;</span><br><span class="line">      total += <span class="keyword">this</span>.dataStore[row][col];</span><br><span class="line">    &#125;</span><br><span class="line">    avg[row] = total/<span class="keyword">this</span>.dataStore[row].length;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> avg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++) &#123;</span><br><span class="line">   data[i] = [];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> temps = <span class="keyword">new</span> weekTemps(data);</span><br><span class="line">temps.add(<span class="number">1</span>,<span class="number">20</span>);</span><br><span class="line">temps.add(<span class="number">1</span>,<span class="number">22</span>);</span><br><span class="line">temps.add(<span class="number">1</span>,<span class="number">25</span>);</span><br><span class="line">temps.add(<span class="number">1</span>,<span class="number">27</span>);</span><br><span class="line">temps.add(<span class="number">1</span>,<span class="number">27</span>);</span><br><span class="line">temps.add(<span class="number">1</span>,<span class="number">27</span>);</span><br><span class="line">temps.add(<span class="number">1</span>,<span class="number">25</span>);</span><br><span class="line">temps.add(<span class="number">2</span>,<span class="number">26</span>);</span><br><span class="line">temps.add(<span class="number">2</span>,<span class="number">20</span>);</span><br><span class="line">temps.add(<span class="number">2</span>,<span class="number">20</span>);</span><br><span class="line">temps.add(<span class="number">2</span>,<span class="number">19</span>);</span><br><span class="line">temps.add(<span class="number">2</span>,<span class="number">17</span>);</span><br><span class="line">temps.add(<span class="number">2</span>,<span class="number">20</span>);</span><br><span class="line">temps.add(<span class="number">2</span>,<span class="number">22</span>);</span><br><span class="line">temps.add(<span class="number">3</span>,<span class="number">24</span>);</span><br><span class="line">temps.add(<span class="number">3</span>,<span class="number">23</span>);</span><br><span class="line">temps.add(<span class="number">3</span>,<span class="number">25</span>);</span><br><span class="line">temps.add(<span class="number">3</span>,<span class="number">25</span>);</span><br><span class="line">temps.add(<span class="number">3</span>,<span class="number">27</span>);</span><br><span class="line">temps.add(<span class="number">3</span>,<span class="number">27</span>);</span><br><span class="line">temps.add(<span class="number">3</span>,<span class="number">28</span>);</span><br><span class="line">temps.add(<span class="number">4</span>,<span class="number">30</span>);</span><br><span class="line">temps.add(<span class="number">4</span>,<span class="number">28</span>);</span><br><span class="line">temps.add(<span class="number">4</span>,<span class="number">29</span>);</span><br><span class="line">temps.add(<span class="number">4</span>,<span class="number">29</span>);</span><br><span class="line">temps.add(<span class="number">4</span>,<span class="number">31</span>);</span><br><span class="line">temps.add(<span class="number">4</span>,<span class="number">30</span>);</span><br><span class="line">temps.add(<span class="number">4</span>,<span class="number">28</span>);</span><br><span class="line">temps.add(<span class="number">5</span>,<span class="number">31</span>);</span><br><span class="line">temps.add(<span class="number">5</span>,<span class="number">31</span>);</span><br><span class="line">print(<span class="string">"the average of the month:"</span>);</span><br><span class="line">print(temps.monthaverage());</span><br><span class="line"><span class="keyword">var</span> weekavg = temps.weekaverage();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;weekavg.length; ++i) &#123;</span><br><span class="line">  print(<span class="string">"week "</span>+ <span class="built_in">parseInt</span>(i+<span class="number">1</span>) + <span class="string">", average: "</span>+ weekavg[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Q4:创建这样一个对象，它将字母存储在一个数组中，并且用一个方法可以将字母连在一起，显示成一个单词。">Q4:创建这样一个对象，它将字母存储在一个数组中，并且用一个方法可以将字母连在一起，显示成一个单词。</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Combine</span>(<span class="params"></span>)  </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.words = [];</span><br><span class="line">  <span class="keyword">this</span>.add = add;</span><br><span class="line">  <span class="keyword">this</span>.connect = connect;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">character</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.words.push(character);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">connect</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> word;</span><br><span class="line">  word = <span class="keyword">this</span>.words.join(<span class="string">""</span>);</span><br><span class="line">  <span class="keyword">return</span> word;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myword = <span class="keyword">new</span> Combine();</span><br><span class="line">myword.add(<span class="string">"H"</span>);</span><br><span class="line">myword.add(<span class="string">"E"</span>);</span><br><span class="line">myword.add(<span class="string">"L"</span>);</span><br><span class="line">myword.add(<span class="string">"L"</span>);</span><br><span class="line">myword.add(<span class="string">"O"</span>);</span><br><span class="line">print(myword.connect());</span><br></pre></td></tr></table></figure>
+	  
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+		
+	
+		
+			
+			
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			
+			
+			
+	
+		<li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next"><a href="/2015/06/20/CodeTest/" class="alignright next">next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2015 <a href="http://www.cnblogs.com/Kassadin/" target="_blank">Li Yi</a>
+  
+      . Thanks for <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> , <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://github.com/wzpan/hexo-theme-wixo/">Wixo</a>.
+</p>
+ </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">
+  <span>▲</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+</body>
+</html>
