@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>5.2 Algorithm 2 | すべてはシュタインズゲートの選択だ</title>
+  <meta name="author" content="Li Yi">
+  
+  <meta name="description" content="5.2 Image Encryption AlgorithmAs we talked in chapter 3, we will use a key to encrypt the picture we made in 5.1. Then we can use the same key to decr">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="5.2 Algorithm 2"/>
+  <meta property="og:site_name" content="すべてはシュタインズゲートの選択だ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="すべてはシュタインズゲートの選択だ" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">すべてはシュタインズゲートの選択だ</a><span class="split"></span><span class="title">5.2 Algorithm 2</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2015-07-10</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  
+
+  
+	<div class="col-md-12">
+	  
+
+	  <!-- content -->
+	  <h2 id="5-2_Image_Encryption_Algorithm">5.2 Image Encryption Algorithm</h2><p>As we talked in chapter 3, we will use a key to encrypt the picture we made in 5.1. Then we can use the same key to decrypt.</p>
+<h3 id="5-2-1_Principle">5.2.1 Principle</h3><ol>
+<li>First client uses user’s password to generate a barcode picture and takes this picture as a key.</li>
+<li>Second the client uses this key to encrypt the real picture we want to transfer.</li>
+<li>Then the server requires user’s password from database, and uses it to generate the same key.</li>
+<li>The server decrypts the picture send from client and gets the real picture.</li>
+<li>Get the barcode picture and fingerprint picture from the real picture.</li>
+</ol>
+<h3 id="5-2-2_Encryption_and_Decryption">5.2.2 Encryption and Decryption</h3><p>The key point is how to encrypt picture using another picture(key). Here we use a very simple algorithm called XOR.<br>Now suppose matrix A and B:</p>
+<p>$A=\begin{bmatrix}<br>128 &amp; 127 &amp; 64\\<br>10 &amp; 20 &amp; 30\\<br>20 &amp; 0 &amp; 255<br>\end{bmatrix}$</p>
+<p>$B=\begin{bmatrix}<br>128 &amp; 128 &amp; 1\\<br>1 &amp; 1 &amp; 2\\<br>255 &amp; 255 &amp; 1<br>\end{bmatrix}$</p>
+<p>The binary form is:</p>
+<p>$A=\begin{bmatrix}<br>10000000 &amp; 01111111 &amp; 01000000\\<br>00001010 &amp; 00010100 &amp; 00011110\\<br>00010100 &amp; 00000000 &amp; 11111111<br>\end{bmatrix}$</p>
+<p>$B=\begin{bmatrix}<br>10000000 &amp; 10000000 &amp; 00000001\\<br>00000001 &amp; 00000001 &amp; 00000010\\<br>11111111 &amp; 11111111 &amp; 00000001<br>\end{bmatrix}$</p>
+<h4 id="5-2-2-1_Encryption">5.2.2.1 Encryption</h4><p>We take matrix B as key, A as original picture. Then we let matrix C = A XOR B.</p>
+<p>$C = A \oplus B = \begin{bmatrix}<br>00000000 &amp; 11111111 &amp; 01000001\\<br>00001011 &amp; 00010101 &amp; 00011100\\<br>11101011 &amp; 11111111 &amp; 11111110<br>\end{bmatrix} = \begin{bmatrix}<br>0 &amp; 255 &amp; 65\\<br>11 &amp; 21 &amp; 28\\<br>235 &amp; 255 &amp; 254<br>\end{bmatrix}$</p>
+<p>We get a picture C by A XOR B, we will send this picture to the server. The attackers can intercept picture C. Howerver, he cannot recover picture A until he steals user’s password and generates it to a barcode.</p>
+<h4 id="5-2-2-2_Decryption">5.2.2.2 Decryption</h4><p>The server requires the user’s password from database. Then the server will get the key from password. Now server take the picture C send from client and key B to decrypt. We let D = C XOR B.</p>
+<p>$D = C \oplus B = \begin{bmatrix}<br>10000000 &amp; 01111111 &amp; 01000000\\<br>00001010 &amp; 00010100 &amp; 00011110\\<br>00010100 &amp; 00000000 &amp; 11111111<br>\end{bmatrix} = \begin{bmatrix}<br>128 &amp; 127 &amp; 64\\<br>10 &amp; 20 &amp; 30\\<br>20 &amp; 0 &amp; 255<br>\end{bmatrix} = A$</p>
+<p>Now the server recovers picture A by C XOR B. After that, the sever side can extract fingerprint image from picture A.</p>
+	  
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+		
+	
+		
+	
+		
+			
+		
+	
+		
+			
+			
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+			
+			
+			
+		
+			
+		
+	
+		
+			
+		
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+	
+	
+		<li class="prev"><a href="/2015/07/10/150710-Matching/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next"><a href="/2015/06/29/Nancy-Framework/" class="alignright next">next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2015 <a href="http://www.cnblogs.com/Kassadin/" target="_blank">Li Yi</a>
+  
+      . Thanks for <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> , <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://github.com/wzpan/hexo-theme-wixo/">Wixo</a>.
+</p>
+ </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">
+  <span>▲</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+</body>
+</html>
