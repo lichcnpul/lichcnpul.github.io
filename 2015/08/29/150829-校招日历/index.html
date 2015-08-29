@@ -3,15 +3,49 @@
 <head>
   <meta charset="utf-8">
   
-  <title>6 Matching | すべてはシュタインズゲートの選択だ</title>
+  <title>校招日历 | すべてはシュタインズゲートの選択だ</title>
   <meta name="author" content="Li Yi">
   
-  <meta name="description" content="6 Matching6.1 Basic ConceptAfter the server receives the picture send from client, it will decode it and get the real fingerprint picture. Now the fin">
+  <meta name="description" content="校园招聘日历（持续更新ing)
+
+
+公司名称
+网申截止日期
+笔试日期
+校招官网
+
+
+
+
+腾讯
+9月4日
+9月5日，6日 19:00-21:00
+腾讯校招
+
+
+网易游戏
+9月9日
+9月15日左右
+网易游戏校招
+
+
+百度
+9月8日22:00
+9月11日
+百度校招
+
+
+去哪
+待定
+9月17日
+去哪校招
+
+">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="6 Matching"/>
+  <meta property="og:title" content="校招日历"/>
   <meta property="og:site_name" content="すべてはシュタインズゲートの選択だ"/>
 
   
@@ -45,7 +79,7 @@
   <div class="container" id="container">
 	<div class="content">
 	  <div class="page-header">		
-  <h1><a class="brand" href="/">すべてはシュタインズゲートの選択だ</a><span class="split"></span><span class="title">6 Matching</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2015-07-10</span></h1>
+  <h1><a class="brand" href="/">すべてはシュタインズゲートの選択だ</a><span class="split"></span><span class="title">校招日历</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2015-08-29</span></h1>
 </div>		
 
 <div class="row page">
@@ -58,16 +92,84 @@
 	  
 
 	  <!-- content -->
-	  <h1 id="6_Matching">6 Matching</h1><h2 id="6-1_Basic_Concept">6.1 Basic Concept</h2><p>After the server receives the picture send from client, it will decode it and get the real fingerprint picture. Now the fingerprint picture is send to matching module. It will be matched with fingerprints stored in the database. Basically, the matching module will extract fingerprint features from fingerprint picture. Traditionally, two fingerprints have been compared using discrete features called minutiae. These features include points in a finger’s friction skin where ridges end (called a ridge ending) or split (called a ridge bifurcation). The figure shows an example of the two types of minutiae.<br><img src="/images/thesis/chapter6/1.png" alt="minutiae"><br>The matching engine will compare two fingerprints by minutiae. After that, it will give a matching score. If the fingerprint is matching, the match score will be high. Otherwise, the score will be zero.</p>
-<h2 id="6-2_SourceAFIS">6.2 SourceAFIS</h2><p>There are some open-source fingerprint matching software on the internet. We tried NBIS software and SourceAFIS software. We also used a commercial software called UrU SDK to do the experiment. Finally, we choose SourceAFIS as our matching engine. The matching algorithm is like this:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> AfisEngine Afis = <span class="keyword">new</span> AfisEngine();</span><br><span class="line">Fingerprint fp1 = <span class="keyword">new</span> Fingerprint();</span><br><span class="line">Person person1 = <span class="keyword">new</span> Person();</span><br><span class="line">person1.Fingerprints.Add(fp1);</span><br><span class="line"><span class="comment">// person2 do the same operation as person1</span></span><br><span class="line">Afis.Extract(person1);</span><br><span class="line">Afis.Extract(person2);</span><br><span class="line">score = Afis.Verify(person1, person2);</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li>Step1: Define a match engine Afis.</li>
-<li>Step2: Define 2 Fingerprint Objects from fingerprint pictures.</li>
-<li>Step3: Define 2 Person Objects and add the Fingerprint Objects to Person.</li>
-<li>Step4: Use the method Extract of match engine to extract features.</li>
-<li>Step5: Use the method Verify of match engine to get the match score.</li>
-<li>Step6: The client determines whether the authentication is passed by the score.</li>
-</ol>
+	  <h1 id="校园招聘日历（持续更新ing)">校园招聘日历（持续更新ing)</h1><table>
+<thead>
+<tr>
+<th>公司名称</th>
+<th>网申截止日期</th>
+<th>笔试日期</th>
+<th>校招官网</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>腾讯</td>
+<td>9月4日</td>
+<td>9月5日，6日 19:00-21:00</td>
+<td><a href="http://join.qq.com/faq.php" target="_blank" rel="external">腾讯校招</a></td>
+</tr>
+<tr>
+<td>网易游戏</td>
+<td>9月9日</td>
+<td>9月15日左右</td>
+<td><a href="http://game.campus.163.com/shixi/zpjc.html" target="_blank" rel="external">网易游戏校招</a></td>
+</tr>
+<tr>
+<td>百度</td>
+<td>9月8日22:00</td>
+<td>9月11日</td>
+<td><a href="http://talent.baidu.com/external/baidu/campus.html#/process" target="_blank" rel="external">百度校招</a></td>
+</tr>
+<tr>
+<td>去哪</td>
+<td>待定</td>
+<td>9月17日</td>
+<td><a href="http://star.qunar.com/main.html#3rdPage" target="_blank" rel="external">去哪校招</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>待定</td>
+<td>待定</td>
+<td><a href="http://campus.meituan.com/recruitment/job" target="_blank" rel="external">美团校招</a></td>
+</tr>
+<tr>
+<td>CVTE</td>
+<td>待定</td>
+<td>9月8日/12日/15日/17日选一</td>
+<td><a href="http://campus.cvte.com/" target="_blank" rel="external">CVTE校招</a></td>
+</tr>
+<tr>
+<td>华为</td>
+<td>待定</td>
+<td>待定</td>
+<td><a href="http://career.huawei.com/recruitment/campus.html" target="_blank" rel="external">华为校招</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>9月中下旬</td>
+<td>待定</td>
+<td><a href="http://campus.jd.com/" target="_blank" rel="external">京东校招</a></td>
+</tr>
+<tr>
+<td>唯品会</td>
+<td>10月12日</td>
+<td>..</td>
+<td>..</td>
+</tr>
+<tr>
+<td>乐视</td>
+<td>待更新</td>
+<td>..</td>
+<td>..</td>
+</tr>
+<tr>
+<td>网易</td>
+<td>待更新</td>
+<td>..</td>
+<td>..</td>
+</tr>
+</tbody>
+</table>
 	  
 
 	  <div>
@@ -80,18 +182,6 @@
 	
 	
 		
-	
-		
-	
-		
-	
-		
-			
-			
-		
-	
-		
-			
 			
 			
 		
@@ -103,25 +193,25 @@
 		
 	
 		
-			
-		
 	
 		
-			
-		
 	
-		
-			
 		
 	
 		
 	
 		
-			
+	
 		
 	
 		
-			
+	
+		
+	
+		
+	
+		
+	
 		
 	
 		
@@ -131,7 +221,7 @@
 	
 	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
 	
-		<li class="next"><a href="/2015/07/10/150710-Algorithm2/" class="alignright next">next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+		<li class="next disabled"><a>next<i class="fa fa-arrow-circle-o-right"></i></a></li>
 	
 </ul>
 </div>
