@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>最短路径问题求解 | すべてはシュタインズゲートの選択だ</title>
+  <meta name="author" content="Li Yi">
+  
+  <meta name="description" content="华为机试－3题目需求Jack周日去动物园看“猩猩”，为了直达目的地，Jack想根据动物园地图计算从园区入口到“猩猩”馆的最短路径是多长？
+输入5 40 7 3 10 157 0 5 13 123 5 0 5 1010 13 5 0 1115 12 10 11 0  
+输入说明输入中第一行第一个数为动">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="最短路径问题求解"/>
+  <meta property="og:site_name" content="すべてはシュタインズゲートの選択だ"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="すべてはシュタインズゲートの選択だ" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">すべてはシュタインズゲートの選択だ</a><span class="split"></span><span class="title">最短路径问题求解</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2015-08-31</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  
+
+  
+	<div class="col-md-12">
+	  
+
+	  <!-- content -->
+	  <h1 id="华为机试－3">华为机试－3</h1><h2 id="题目">题目</h2><h3 id="需求">需求</h3><p>Jack周日去动物园看“猩猩”，为了直达目的地，Jack想根据动物园地图计算从园区入口到“猩猩”馆的最短路径是多长？</p>
+<h3 id="输入">输入</h3><p>5 4<br>0 7 3 10 15<br>7 0 5 13 12<br>3 5 0 5 10<br>10 13 5 0 11<br>15 12 10 11 0  </p>
+<h3 id="输入说明">输入说明</h3><p>输入中第一行第一个数为动物园展览馆总数n(包括0号馆)，第二个数为“猩猩”馆的数字编号(入口编号为0号馆)。后面的输入是一个n×n的矩阵，表示动物园地图，其中，矩阵节点之间用一个空格隔开，矩阵节点的值n[i][j]代表i号馆到j号馆的距离,0表示馆间不通或无效路径。</p>
+<h3 id="输出">输出</h3><p>13 //最短路径长度</p>
+<h2 id="求解">求解</h2><p>采用Dijstra算法<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> V_MAX 26</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> MAXVALUE 32767</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">char</span> Vertex[V_MAX];</span><br><span class="line">	<span class="keyword">int</span> Edges[V_MAX][V_MAX];</span><br><span class="line">	<span class="keyword">int</span> isTrav[V_MAX];</span><br><span class="line">	<span class="keyword">int</span> VNum;</span><br><span class="line">	<span class="keyword">int</span> EgdeNum;</span><br><span class="line">&#125;MatrixGraph;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CreateMatrixGriph</span><span class="params">(MatrixGraph *G)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> obj;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;G-&gt;VNum,&amp;obj);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;G-&gt;VNum; i++) &#123;</span><br><span class="line">		G-&gt;Vertex[i] = <span class="string">'0'</span>+i;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;G-&gt;VNum;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;G-&gt;VNum; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;G-&gt;Edges[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	G-&gt;EgdeNum = G-&gt;VNum * G-&gt;VNum;</span><br><span class="line">	<span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Dijkstra</span><span class="params">(MatrixGraph G, <span class="keyword">int</span> obj)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> weight[V_MAX];</span><br><span class="line">	<span class="keyword">int</span> path[V_MAX];</span><br><span class="line">	<span class="keyword">int</span> tmpvertex[V_MAX];</span><br><span class="line">	<span class="keyword">int</span> i,j,k,v0,min;</span><br><span class="line">	v0 = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;G.VNum;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		weight[i] = G.Edges[v0][i];</span><br><span class="line">		<span class="keyword">if</span>(weight[i]&lt;MAXVALUE &amp;&amp; weight[i]&gt;<span class="number">0</span>)</span><br><span class="line">			path[i] = v0;</span><br><span class="line">		tmpvertex[i] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	tmpvertex[v0] = <span class="number">1</span>;</span><br><span class="line">	weight[v0] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;G.VNum;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		min = MAXVALUE;</span><br><span class="line">		k = v0;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;G.VNum; j++)</span><br><span class="line">			<span class="keyword">if</span>(tmpvertex[j]==<span class="number">0</span> &amp;&amp; weight[j]&lt;min)</span><br><span class="line">			&#123;</span><br><span class="line">				min = weight[j];</span><br><span class="line">				k = j;</span><br><span class="line">			&#125;</span><br><span class="line">		tmpvertex[k] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;G.VNum; j++)</span><br><span class="line">			<span class="keyword">if</span>(tmpvertex[j]==<span class="number">0</span> &amp;&amp; weight[k]+G.Edges[k][j]&lt;weight[j])</span><br><span class="line">			&#123;</span><br><span class="line">				weight[j] = weight[k] + G.Edges[k][j];</span><br><span class="line">				path[j] = k;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> weight[obj];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	MatrixGraph G;</span><br><span class="line">	<span class="keyword">int</span> obj = CreateMatrixGriph(&amp;G);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, Dijkstra(G,obj));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="结果">结果</h2><p><img src="/images/10.png" alt="输出结果"></p>
+	  
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+		
+			
+			
+		
+	
+		
+			
+			
+			
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+	
+		<li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next"><a href="/2015/08/29/150829-校招日历/" class="alignright next">next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2015 <a href="http://www.cnblogs.com/Kassadin/" target="_blank">Li Yi</a>
+  
+      . Thanks for <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> , <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://github.com/wzpan/hexo-theme-wixo/">Wixo</a>.
+</p>
+ </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">
+  <span>▲</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+</body>
+</html>
